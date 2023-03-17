@@ -33,7 +33,7 @@ def addtodb():
             con.rollback()
             msg = name + " was not added"
         con.close()
-    return render_template("index.html", mesg=msg)
+    return render_template("create.html", mesg=msg)
     
 
 
@@ -61,14 +61,13 @@ def searchplayer():
     msg = ""
     res = []
     if request.method == "POST":
-        try:
-            name = request.form["searching"]
-            print(name)
-            with sqlite3.connect("players.db") as con: 
-                cur = con.cursor()
-                res = cur.execute("SELECT * FROM 'players' WHERE name LIKE'%" + name +"%';")
-                res = res.fetchall()
-        except:
+        name = request.form["searching"]
+        print(name)
+        with sqlite3.connect("players.db") as con: 
+            cur = con.cursor()
+            res = cur.execute("SELECT * FROM 'players' WHERE name LIKE'%" + name +"%';")
+            res = res.fetchall()
+        if len(res) == 0:
             msg = name + " was not found"
         con.close()
     return render_template("search.html",mesg=msg,res=res)
