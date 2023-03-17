@@ -1,0 +1,23 @@
+.card {
+    display: inline-block;
+}
+
+h1 {
+    text-align: center;
+}
+
+.rounded {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p.indent {
+    font-size: xx-large;
+    text-indent: 30px;
+}
+
+.navbar-brand{
+
+    cursor: no-drop; 
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>CRUD APP</title>
+</head>
+
+<body>
+    <h1>Basic Flask CRUD APP</h1>
+    <a href="/">Home</a>
+    <a href="/add">Add Player</a>
+    <a href="/delete">Delete Player</a>
+    <a href="/search">Search Player</a>
+
+    <form action="/delete" method="post">
+        <input type="text" name="searching">
+        <input type="submit" value="Delete">
+    </form>
+    
+
+    <h2>{{mesg}}</h2>
+
+</body>
+
+
+
+
+</html>

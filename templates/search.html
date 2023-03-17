@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>CRUD APP</title>
+</head>
+
+<body>
+    <h1>Basic Flask CRUD APP</h1>
+    <a href="/">Home</a>
+    <a href="/add">Add Player</a>
+    <a href="/delete">Delete Player</a>
+    <a href="/search">Search Player</a>
+
+    <form action="/search" method="post">
+        Find<input type="text" name="searching">
+        <input type="submit" value="Submit">
+    </form>
+    
+
+    <h2>{{mesg}}</h2>
+    <table>
+        <tr>
+          <th>Name</th>
+          <th>ID</th>
+          <th>Score</th>
+        </tr>
+        {% for u in res %}
+        <tr>
+          <td>{{ u[0] }}</td>
+          <td>{{ u[1] }}</td>
+          <td>{{ u[2] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+</body>
+
+
+
+
+</html>
