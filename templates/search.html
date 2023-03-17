@@ -28,10 +28,7 @@
               <a class="nav-link"  href="/add">Add Player</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/delete">Delete Player</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/search">Search Player</a>
+              <a class="nav-link active" aria-current="page" href="/search">Search and Delete Players</a>
             </li>
           </ul>
         </div>
@@ -41,29 +38,35 @@
 
 
     <form action="/search" method="post">
-        Find<input type="text" name="searching">
+        Search<input type="text" name="searching">
         <input type="submit" value="Submit">
     </form>
 
-      <h2>{{mesg}}</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">ID</th>
-            <th scope="col">Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for u in res %}
-          <tr>
-            <td>{{ u[0] }}</td>
-            <td>{{ u[1] }}</td>
-            <td>{{ u[2] }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <form action="/delete" method="post">
+      Enter ID for Deletion<input type="number" name="deleting">
+      <input type="submit" value="Delete">
+    </form>
+  
+    
+  <h2>{{mesg}}</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">ID</th>
+          <th scope="col">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for u in res %}
+        <tr>
+          <td>{{ u[0] }}</td>
+          <td>{{ u[1] }}</td>
+          <td>{{ u[2] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
 </body>
 

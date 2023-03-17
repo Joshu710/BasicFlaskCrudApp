@@ -39,27 +39,30 @@ def addtodb():
 
 @app.route("/delete",methods=["POST","GET"])
 def delplayer():
+    print("del")
     msg = ""
     if request.method == "POST":
         try:
-            name = request.form["searching"]
-            print(name)
+            id = request.form["deleting"]
+            print(id)
             with sqlite3.connect("players.db") as con: 
                 cur = con.cursor()
-                cur.execute("DELETE FROM players WHERE name='" + name +"'")
+                cur.execute("DELETE FROM players WHERE id = " +id +";")
                 con.commit()
-                msg = name + " was deleted"
+                msg = "Player with ID " + id + " was deleted"
         except:
             con.rollback()
-            msg = name + " was not deleted"
+            msg = "Player with ID " + id + " was not deleted"
         con.close()
-    return render_template("delete.html",mesg=msg)
+    res = getplayers()
+    return render_template("search.html",mesg=msg,res=res)
 
 
 @app.route("/search",methods=["POST","GET"])
 def searchplayer():
+    print("search")
     msg = ""
-    res = []
+    res = getplayers()
     if request.method == "POST":
         name = request.form["searching"]
         print(name)
